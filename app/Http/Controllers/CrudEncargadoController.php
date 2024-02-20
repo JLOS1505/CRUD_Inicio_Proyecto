@@ -56,4 +56,19 @@ class CrudEncargadoController extends Controller
         }
     }
 
+    public function delete($id)
+    {
+        try {
+            $sql = DB::delete("delete from encargado where id_usuario=$id");
+        } catch (\Throwable $th) {
+            $sql = 0;
+        }
+
+        if ($sql == true) {
+            return back()->with("correcto", "Encargado eliminado correctamente");
+        } else {
+            return back()->with("incorrecto", "Error el eliminar el Encargado");
+        }
+    }
+
 }

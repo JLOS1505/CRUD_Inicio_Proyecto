@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CrudController;
+use App\Http\Controllers\CrudEncargadoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [CrudController::class, "index"])->name("crud.index");
+
+Route::get('/encargado', [CrudEncargadoController::class, "index"])->name("crudEncargado.index");
 
 ///Ruta para añadir un nuevo producto
 Route::post('/registrar-producto', [CrudController::class, "create"])->name("crud.create");

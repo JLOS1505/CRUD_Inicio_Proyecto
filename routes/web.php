@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CrudController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [CrudController::class, "index"])->name("crud.index");
+
+///Ruta para añadir un nuevo producto
+Route::post('/registrar-producto', [CrudController::class, "create"])->name("crud.create");
+
+///Ruta para modificar un nuevo producto
+Route::post('/modificar-producto', [CrudController::class, "update"])->name("crud.update");
+
+///Ruta para eliminar un nuevo producto
+Route::get('/eliminar-producto-{id}', [CrudController::class, "delete"])->name("crud.delete");

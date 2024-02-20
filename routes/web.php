@@ -24,3 +24,12 @@ Route::post('/modificar-producto', [CrudController::class, "update"])->name("cru
 
 ///Ruta para eliminar un nuevo producto
 Route::get('/eliminar-producto-{id}', [CrudController::class, "delete"])->name("crud.delete");
+
+///Ruta para añadir un nuevo Encargado
+Route::post('/registrar-encargado', [CrudEncargadoController::class, "create"])->name("crud.createEncargado");
+
+///Ruta para modificar un nuevo Encargado
+Route::post('/modificar-encargado', [CrudEncargadoController::class, "update"])->name("crud.updateEncargado");
+
+///Ruta para eliminar un nuevo Encargado
+Route::get('/eliminar-encargado-{id}', [CrudEncargadoController::class, "delete"])->name("crud.deleteEncargado");

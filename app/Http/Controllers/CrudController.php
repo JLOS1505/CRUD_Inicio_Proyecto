@@ -56,5 +56,19 @@ class CrudController extends Controller
         }
     }
 
+    public function delete($id)
+    {
+        try {
+            $sql = DB::delete("delete from producto where id_producto=$id");
+        } catch (\Throwable $th) {
+            $sql = 0;
+        }
+
+        if ($sql == true) {
+            return back()->with("correcto", "Producto eliminado correctamente");
+        } else {
+            return back()->with("incorrecto", "Error el eliminar el producto");
+        }
+    }
   
 }

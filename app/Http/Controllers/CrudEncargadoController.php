@@ -34,4 +34,26 @@ class CrudEncargadoController extends Controller
         }
     }
 
+    public function update(Request $request)
+    {
+        try {
+            $sql = DB::update("update encargado set nombre=?, area=?, sueldo=? where id_usuario=?", [
+                $request->txtnombre,
+                $request->txtarea,
+                $request->txtsueldo,
+                $request->txtcodigo,
+            ]);
+            if ($sql == 0) {
+                $sql = 1;
+            }
+        } catch (\Throwable $th) {
+            $sql = 0;
+        }
+        if ($sql == true) {
+            return back()->with("correcto", "Encargado modificado correctamente");
+        } else {
+            return back()->with("incorrecto", "Error el modificar");
+        }
+    }
+
 }

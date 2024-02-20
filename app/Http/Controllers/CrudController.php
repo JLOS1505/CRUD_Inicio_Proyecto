@@ -33,4 +33,28 @@ class CrudController extends Controller
             return back()->with("incorrecto", "Error el registrar");
         }
     }
+
+    public function update(Request $request)
+    {
+        try {
+            $sql = DB::update("update producto set nombre=?, precio=?, cantidad=? where id_producto=?", [
+                $request->txtnombre,
+                $request->txtprecio,
+                $request->txtcantidad,
+                $request->txtcodigo,
+            ]);
+            if ($sql == 0) {
+                $sql = 1;
+            }
+        } catch (\Throwable $th) {
+            $sql = 0;
+        }
+        if ($sql == true) {
+            return back()->with("correcto", "Producto modificado correctamente");
+        } else {
+            return back()->with("incorrecto", "Error el modificar");
+        }
+    }
+
+  
 }

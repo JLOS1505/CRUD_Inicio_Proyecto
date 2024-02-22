@@ -78,8 +78,8 @@
                     <tr>
                         <th scope="row">{{ $item->id_producto }}</th>
                         <td>{{ $item->nombre }}</td>
-                        <td>{{ $item->precio }}</td>
-                        <td><b>$</b>{{ $item->cantidad }}</td>
+                        <td><b>$</b>{{ $item->precio }}</td>
+                        <td>{{ $item->cantidad }}</td>
                         <td><button><a onclick="document.getElementById('modalEditar{{$item->id_producto}}').style.display='block'">editar</a></button>
                             </button><a href="{{route("crud.delete", $item->id_producto )}}" onclick="return res()">borrar</a></button>
                         </td>
